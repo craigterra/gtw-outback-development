@@ -1,0 +1,15 @@
+dist/
+.netlify/
+node_modules/
+.env
+.env.*
+!.env.example
+*-generation-prompt.txt
+MANUFACTURING-REVIEW.txt
+mobile-preview.html
+Start-Website.ps1
+README.txt
+supplier-sources.json
+*.log
+Thumbs.db
+.DS_Store
