@@ -18,3 +18,19 @@
 @media(max-width:700px){.brand-reveal{width:82vw}.iron-shaft{width:70px;height:8px}.intro-controls{margin-top:13px}.intro-playing .brand-initial{animation-name:initial-settle-mobile}}
 @keyframes initial-settle-mobile{0%{transform:scale(1)}35%{transform:scale(1.4);color:#6e2918}100%{transform:scale(1);color:inherit}}
 @media(prefers-reduced-motion:reduce){.intro-playing .brand-reveal,.intro-playing .brand>img,.intro-playing .brand-initial{animation:none!important}.brand-reveal{display:none}}
+
+/* Landing page keeps the journey in the hero; gear is a deliberate page visit. */
+.landing-page .hero{height:calc(100svh - 158px);min-height:560px;max-height:none}.landing-page .hero-foot{align-items:flex-end;bottom:24px}.landing-page .hero-foot>span{font-size:clamp(23px,2.7vw,38px);font-weight:700;line-height:1.08;letter-spacing:-.6px;text-transform:none;text-shadow:0 2px 12px #000b}.landing-page .hero-foot>a{font-size:30px;padding:8px 12px;border:1px solid #ffffff80}.landing-footer{padding:9px 6%;gap:20px;justify-content:space-between;min-height:38px}.landing-footer small{width:auto;margin:0;font-size:10px}.landing-footer>a{font-size:11px}.gear-page .range{padding-top:60px}.gear-page .range h1{font-size:clamp(35px,4vw,57px);line-height:1.08;letter-spacing:-1.9px;margin:0}
+@media(max-width:700px){.landing-page .hero{height:770px;min-height:770px}.landing-page .hero-foot{bottom:155px;align-items:flex-end}.landing-page .hero-foot>span{font-size:25px;max-width:265px}.landing-page .hero-foot>a{font-size:22px;padding:5px 9px}.landing-footer{padding:12px 6%;flex-wrap:wrap}.landing-footer small{font-size:9px}.gear-page .range{padding-top:40px}}
+/* Keep Replay obvious over every part of the photograph. */
+.intro-controls button{min-height:44px;padding:10px 16px;border:1px solid #202422;border-radius:2px;background:#f4eee3;color:#202422;font-size:14px;font-weight:700;box-shadow:0 2px 8px #0003}.intro-controls button:hover{background:#fff9ee}.intro-controls button:focus-visible{outline:3px solid #202422;outline-offset:3px;box-shadow:0 0 0 6px #f4eee3}.intro-controls{position:relative;z-index:2}
+
+/* Short wisps leave the heated mark just after iron contact (440ms). */
+.brand-smoke{position:absolute;inset:0;pointer-events:none}.brand-smoke svg{position:absolute;left:18%;bottom:18%;width:12%;height:140%;overflow:visible;opacity:0;filter:blur(2px);transform-origin:center bottom}.brand-smoke svg:nth-child(2){left:42%}.brand-smoke svg:nth-child(3){left:65%}.brand-smoke path{fill:none;stroke:#eee5d5;stroke-width:7;stroke-linecap:round}.intro-playing .brand-smoke svg{animation:brand-smoke-rise 900ms ease-out 470ms both}.intro-playing .brand-smoke svg:nth-child(2){animation-delay:540ms}.intro-playing .brand-smoke svg:nth-child(3){animation-delay:610ms}
+@keyframes brand-smoke-rise{0%{opacity:0;transform:translateY(12px) scale(.65,.5)}25%{opacity:.72}100%{opacity:0;transform:translate(-12px,-55px) scale(1.3,1.2)}}
+@media(prefers-reduced-motion:reduce){.intro-playing .brand-smoke svg{animation:none!important}.brand-smoke{display:none}}
+
+/* Forged iron from the reference: rust, open head, bracket, shaft and wood grip. */
+.brand-reveal:before{background:radial-gradient(ellipse,#211b16cf 0%,#211b1680 48%,transparent 73%);inset:-34px;border-radius:50%;box-shadow:none}.branding-iron img{overflow:visible;filter:none;object-fit:contain}.branding-iron{filter:drop-shadow(5px 9px 4px #140d0980)}
+@keyframes brand-burn{0%,31%{opacity:0;filter:brightness(.2)}40%,64%{opacity:1;filter:brightness(.23) sepia(.8) saturate(1.4) drop-shadow(1px 2px 1px #f2c89a80)}100%{opacity:1;filter:none}}
+.branding-iron img{position:absolute;left:0;top:-68.8073%;width:100%;height:174.3119%;object-fit:fill}

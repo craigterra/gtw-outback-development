@@ -13,12 +13,12 @@
     document.body.classList.remove('intro-playing');
     if (document.activeElement === skip) replay.focus({preventScroll:true});
     skip.hidden = true;
-    replay.disabled = motion.matches;
+    replay.disabled = false;
     if (announce) status.textContent = 'GTW Outback. Gear That Works.';
   }
   function play() {
     finish();
-    if (motion.matches) return;
+    if (motion.matches) { status.textContent = 'Reduced motion is enabled. The finished logo is shown.'; return; }
     status.textContent = '';
     const reveal = document.querySelector('.brand-reveal');
     const logo = document.querySelector('.brand > img').getBoundingClientRect();
@@ -43,12 +43,12 @@
   skip.addEventListener('click', () => finish(true));
   motion.addEventListener('change', () => {
     finish();
-    replay.textContent = motion.matches ? 'Motion reduced' : 'Replay the brand ↺';
+    replay.textContent = motion.matches ? 'Replay intro (motion reduced)' : 'Replay intro ↺';
   });
   // Hash links to deeper content do not start an introduction off screen.
   let seen = false;
   try { seen = sessionStorage.getItem(key) === 'seen'; } catch {}
-  if (motion.matches) { replay.textContent = 'Motion reduced'; replay.disabled = true; }
+  if (motion.matches) { replay.textContent = 'Replay intro (motion reduced)'; replay.disabled = false; }
   else if (!seen && (!location.hash || location.hash === '#home')) play();
   document.querySelectorAll('header a').forEach(link => link.addEventListener('click', () => finish()));
 })();
