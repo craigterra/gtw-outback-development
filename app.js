@@ -1,3 +1,9 @@
+// Bookmarks to the former story teaser now open the full story.
+function routeLegacyStory() {
+  if (location.hash === '#our-story') location.replace('our-story.html');
+}
+routeLegacyStory();
+addEventListener('hashchange', routeLegacyStory);
 const products=[
 {id:'camping',name:'Aluminium camping canopy',category:'Canopies',image:'assets/camping-2.jpg',description:'A canopy base for a modular storage setup built around your work and days away.',details:['Aluminium camping canopy','Rubber compression seals help keep dust out','Dimensions, layout and vehicle fitment to confirm'],source:'https://www.utetraypro.com/ute-canopy/aluminium-ute-canopy/aluminium-camping-canopy.html'},
 {id:'black',name:'Black aluminium canopy',category:'Canopies',image:'assets/black-2.jpg',description:'A black-finish aluminium canopy to use as a starting point for your setup.',details:['Black aluminium canopy','Interior layout to be discussed','Final finish, dimensions and fitment to confirm'],source:'https://www.utetraypro.com/ute-canopy/aluminium-ute-canopy/black-aluminium-canopy.html'},
