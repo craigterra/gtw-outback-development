@@ -23,3 +23,7 @@ Run `node build.mjs`, then serve the `dist` folder with any static web server.
 ## Preview status
 
 Supplier photographs were selected from utetraypro.com and casecase.en.alibaba.com. Product details link to their source listings. Hero and setup inspiration images are generated concepts. Final products, prices, fitment, warranty terms and manufacturing certification remain subject to confirmation.
+
+## Brand intro preview
+
+The homepage retains the original assets/logo.svg unchanged. A silent 3.8-second intro stamps a large copy of that exact mark (640px maximum desktop, 82vw mobile), settles it into the header, then emphasises G / T / W sequentially. Navigation stays interactive. The sequence runs once per tab session on homepage entry; reloads and deeper hash links stay static. Replay and Skip intro are below the hero actions. Reduced motion shows the original logo and heading without animation. Resizing cancels the animation to avoid an incorrect landing position. Storage restrictions allow the intro to run on each fresh load.
