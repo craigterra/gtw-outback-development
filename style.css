@@ -37,3 +37,6 @@
 
 /* Removed the repeated story opener; retain a readable narrative column. */
 .story-copy{display:block}.story-copy>div{max-width:760px}
+
+/* Practical experience panel follows the camping story. */
+.experience-panel{background:#e8dfce;display:grid;grid-template-columns:1fr 1.15fr;gap:70px;align-items:start}.experience-panel h2{max-width:520px;margin:0}.experience-panel>div{max-width:760px}.experience-panel p{font-size:18px;line-height:1.75;color:#4e564e;margin-bottom:24px}.experience-panel p:last-child{margin-bottom:0}@media(max-width:700px){.experience-panel{grid-template-columns:1fr;gap:26px}.experience-panel p{font-size:16px}}
