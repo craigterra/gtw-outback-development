@@ -15,3 +15,11 @@ Full generation prompts and earlier working variants are archived in the project
 ## Adding resources
 
 Use `images/core/` for approved master imagery. Add logos, product references or other categories as needed, with a short entry identifying source, intended use and approval status. Do not add credentials, customer details or unapproved supplier assets to this public repository.
+
+## Product and setup photos
+
+| Asset | Source and approval | Uses | Website copy |
+| --- | --- | --- | --- |
+| [Kitchen layout photo](images/product/kitchen-layout-photo.png) | Supplied by Craig and approved for this use, 28 October 2026 | Homepage: Great gear. Better together. | `assets/kitchen-layout-photo.png` |
+
+The supplied photo is retained unchanged. It replaces the generated kitchen placeholder in the homepage feature.
