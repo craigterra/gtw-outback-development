@@ -148,3 +148,13 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 .campaign-playing .hero-foot>span{animation-delay:4.05s}
 .campaign-playing .hero-telex{animation-delay:4.85s}
 @media(prefers-reduced-motion:reduce){.campaign-pending .hero .eyebrow,.campaign-playing .hero .eyebrow{animation:none;opacity:1}}
+
+/* Keep the next step visible at the bottom of the first screen. */
+@media(min-width:701px){.fitout-home .hero{height:calc(100svh - 118px);min-height:560px}}
+.hero-scroll-cue{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:8px 15px;min-height:38px;background:#202422bb;color:var(--cream);border:1px solid #f4eee38c;border-radius:2px;font-size:12px;font-weight:700;letter-spacing:.4px;text-shadow:none}
+.hero-scroll-cue span{font-size:21px;line-height:1}.hero-scroll-cue:hover{background:var(--ink)}
+#great-gear{scroll-margin-top:94px}
+@media(max-width:700px){.fitout-home .hero-foot{bottom:75px}.hero-scroll-cue{bottom:15px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+@media(min-width:701px){.fitout-home .hero h1{font-size:clamp(42px,min(4.7vw,7.1svh),70px)}.fitout-home .hero-foot{bottom:70px}}
