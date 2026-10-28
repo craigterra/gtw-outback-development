@@ -3,19 +3,23 @@
   const AudioEngine = window.AudioContext || window.webkitAudioContext;
   if (!button || !AudioEngine) return;
   button.hidden = false;
-  let enabled = true, context, master, noise, recording, generation = 0;
+  let enabled = true, playing = false, endTimer, context, master, noise, recording, generation = 0;
   const sources = new Set();
   try { enabled = sessionStorage.getItem('gtw-sound-muted') !== 'true'; } catch {}
 
   function label(blocked = false) {
-    button.textContent = blocked ? 'Play with sound' : enabled ? 'Sound on' : 'Sound off';
+    button.textContent = blocked || (enabled && !playing) ? 'Play with sound' : enabled ? 'Sound on' : 'Sound off';
+    button.dataset.playback = blocked ? 'blocked' : playing ? 'playing' : enabled ? 'ready' : 'muted';
     button.setAttribute('aria-pressed', String(enabled));
-    button.setAttribute('aria-label', blocked ? 'Replay intro with sound' : enabled ? 'Mute intro sound' : 'Enable sound and replay intro');
+    button.setAttribute('aria-label', blocked || (enabled && !playing) ? 'Replay intro with sound' : enabled ? 'Mute intro sound' : 'Enable sound and replay intro');
   }
   function stop() {
     generation++;
+    clearTimeout(endTimer);
+    playing = false;
     for (const source of sources) { try { source.stop(); } catch {} }
     sources.clear();
+    label();
   }
   function engine() {
     if (context) return;
@@ -40,10 +44,13 @@
           for (let i = Math.floor(seconds * rate); i < (seconds + length) * rate; i += stride) energy += data[i] * data[i];
           if (energy > best) { best = energy; offset = seconds; }
         }
+        let peak = 0;
+        for (let i = Math.floor(offset * rate); i < (offset + length) * rate; i++) peak = Math.max(peak, Math.abs(data[i]));
+        button.dataset.recordingPeak = String(peak);
         button.dataset.recording = 'ready';
         button.dataset.excerptStart = String(offset);
         button.dataset.excerptLength = String(length);
-        return {buffer, offset, length};
+        return {buffer, offset, length, level: Math.min(3, 0.7 / Math.max(peak, 0.01))};
       }).catch(() => { button.dataset.recording = 'unavailable'; return null; });
   }
   function track(source, end) {
@@ -67,6 +74,9 @@
     track(source, start + duration + 0.02);
   }
   function schedule() {
+    playing = true;
+    label();
+    endTimer = setTimeout(stop, 10500);
     const t = context.currentTime + 0.03, request = generation;
     hiss(t + 0.3, 0.85, 0.55, 1700);
     recording.then(clip => {
@@ -79,8 +89,8 @@
       source.buffer = clip.buffer;
       const gain = context.createGain();
       gain.gain.setValueAtTime(0, start);
-      gain.gain.linearRampToValueAtTime(0.85, start + 0.35);
-      gain.gain.setValueAtTime(0.85, start + duration - 0.65);
+      gain.gain.linearRampToValueAtTime(clip.level, start + 0.35);
+      gain.gain.setValueAtTime(clip.level, start + duration - 0.65);
       gain.gain.linearRampToValueAtTime(0, start + duration);
       source.connect(gain).connect(master);
       source.start(start, clip.offset + elapsed, duration);
@@ -103,7 +113,7 @@
     } catch { label(true); }
   }
   button.addEventListener('click', () => {
-    if (button.textContent !== 'Play with sound' && enabled) {
+    if (playing && enabled) {
       enabled = false;
       stop();
       label();
