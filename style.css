@@ -90,3 +90,8 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 @media(max-width:700px){.fitout-home .hero h1{font-size:clamp(36px,10vw,50px);letter-spacing:-1.7px}.fitout-home .hero{height:780px;min-height:780px}.fitout-home .hero-inner{padding-top:30px}.fitout-home .hero-inner>.hero-description{font-size:15px;max-width:330px}.fitout-home .actions{gap:12px}.story-landscape{height:auto;aspect-ratio:16/9;background-size:cover;background-position:center}}
 
 @media(max-width:700px){.fitout-home .hero-foot span{font-size:11px;line-height:1.5;letter-spacing:1px}}
+
+/* Quiet story banner and kitchen concept supporting the campaign. */
+.story-landscape{height:210px;background-image:linear-gradient(#f4eee3d6,#f4eee3d6),url('assets/outback-hero-proportions-v11.webp');background-position:center 64%}
+.concept-image-caption{padding:10px 12px;color:var(--muted);background:var(--cream);font-weight:normal}
+@media(max-width:700px){.story-landscape{height:130px;aspect-ratio:auto;background-position:center 64%}}
