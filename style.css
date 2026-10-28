@@ -158,3 +158,22 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 @media(min-width:701px){.fitout-home .hero h1{font-size:clamp(42px,min(4.7vw,7.1svh),70px)}.fitout-home .hero-foot{bottom:70px}}
+
+/* Local preview: optional intro sound, enabled by default. */
+.hero-sound{position:absolute;top:23px;right:6%;z-index:3;padding:8px 13px;min-height:40px;border:1px solid #f4eee399;background:#202422b8;color:var(--cream);font-size:12px;border-radius:2px}
+.hero-sound:hover{background:var(--ink)}
+.panel-explore{display:inline-flex;align-items:center;gap:16px;margin-top:14px;padding:10px 0;border-bottom:1px solid var(--ink);font-weight:700;font-size:14px}
+.panel-explore span{font-size:22px}
+@media(max-width:700px){.hero-sound{top:10px;right:6%;padding:6px 10px;min-height:34px;font-size:10px}.fitout-home .hero-inner{padding-top:57px}}
+
+/* The brand sign-off closes the hero; voice mode leaves room to hear each line. */
+.hero-audio-controls{position:absolute;top:23px;right:6%;z-index:3;display:flex;gap:8px}.hero-audio-controls .hero-sound{position:static}
+.fitout-home .hero .hero-brandline{margin:15px 0 0;font-size:13px;letter-spacing:1.3px;line-height:1.5}
+.campaign-playing .staggered-headline>span:nth-child(1){animation-delay:.2s}
+.campaign-playing .staggered-headline>span:nth-child(2){animation-delay:.95s}
+.campaign-playing .staggered-headline>span:nth-child(3){animation-delay:1.7s}
+.campaign-playing .staggered-headline>span:nth-child(4){animation-delay:2.45s}
+.campaign-playing .hero-foot>span{animation-delay:3.35s}
+.campaign-playing .hero-telex{animation-delay:4.15s}
+.campaign-playing .hero .hero-brandline{animation-delay:7.95s}
+@media(max-width:700px){.hero-audio-controls{top:10px;right:6%}.fitout-home .hero .hero-brandline{font-size:10px;letter-spacing:.8px;margin-top:12px}.fitout-home .hero-foot{bottom:75px}}

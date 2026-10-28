@@ -5,11 +5,12 @@
   const skip = document.querySelector('#intro-skip');
   const status = document.querySelector('#intro-status');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const key = 'gtw-brand-intro-v5';
+  const key = 'gtw-brand-intro-v6';
   let timer;
   controls.hidden = false;
   function finish(announce = false, keepCopy = false) {
     clearTimeout(timer);
+    if (!keepCopy) window.GTWHeroAudio?.stop();
     document.body.classList.remove('intro-playing');
     document.body.classList.remove('campaign-pending', 'campaign-playing');
     if (keepCopy && !motion.matches) document.body.classList.add('campaign-playing');
@@ -43,6 +44,7 @@
     void document.body.offsetWidth;
     document.body.classList.add('intro-playing', 'campaign-pending');
     skip.hidden = false;
+    window.GTWHeroAudio?.start();
     // The iron lands first; the brand line then leads the copy sequence.
     timer = setTimeout(() => finish(true, true), 1800);
     try { sessionStorage.setItem(key, 'seen'); } catch {}
@@ -53,6 +55,11 @@
     play();
   });
   skip.addEventListener('click', () => finish(true));
+  addEventListener('gtw-replay-with-sound', () => {
+    window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+    play();
+    if (motion.matches) window.GTWHeroAudio?.start();
+  });
   motion.addEventListener('change', () => {
     finish();
     replay.textContent = motion.matches ? 'Replay intro (motion reduced)' : 'Replay intro ↺';

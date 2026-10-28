@@ -59,3 +59,13 @@ On the first homepage visit per tab session, the branding iron runs for 3.8 seco
 ## Sequential reading order — 28 October 2026
 
 Supersedes earlier animation timing notes: the iron lands in 1.8 seconds, followed by the complete brand line. The headline begins 0.9 seconds later, with 0.75 seconds between lines, then the white reply and telex. Individual G/T/W emphasis is disabled to avoid simultaneous movement. Replay, reduced motion, skip and static repeat visits retain their previous behavior.
+
+## Local audio mock-up — not published
+
+The intro now requests sound by default, with a visible mute control. Browser autoplay restrictions show “Play with sound”; clicking restarts the visual and audio sequence together. Audio is synthesized locally: short branding-iron hiss, gentle breeze, bird-like whistles and telex ticks. It stops after the sequence, on skip, resize, navigation or a hidden tab. Explicit muting is remembered for the tab session. These are sound-design placeholders, not field recordings. The kitchen panel now includes an Explore more link to the fit-out hub. Preview locally and publish only when Craig asks to push it live.
+
+Voice preview is optional and off by default. It selects a named Australian male voice (such as Microsoft James) from the browser voice inventory, with a measured pace and slightly lower pitch. If none is available the control says so, rather than substituting another accent or gender. Voice mode spaces the headline lines 1.7 seconds apart and shifts the reply/telex accordingly. The brand line now closes below the telex. No audio changes have been published.
+
+## Kookaburra sound revision — local only
+
+Craig rejected the synthetic voice preview. Voice controls and speech synthesis are removed. The local intro instead uses a real public-domain laughing kookaburra recording by Kuco, alongside the short synthetic iron sizzle and telex clicks. The source master and provenance are in `resources/audio/`. The browser plays a faded excerpt, without looping. The sign-off remains below the telex, and the kitchen panel retains Explore more. This supersedes the earlier voice-preview notes; no local audio changes have been pushed to GitHub or Netlify.

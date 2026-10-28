@@ -5,7 +5,7 @@ import path from 'node:path';
 const root = path.dirname(fileURLToPath(import.meta.url));
 const destination = path.join(root, 'dist');
 await mkdir(destination, { recursive: true });
-for (const file of ['index.html', 'system.html', 'our-story.html', 'gear.html', 'trays.html', 'canopies.html', 'packs.html', 'fitout.js', 'exterior.html', 'interior.html', 'range-data.js', 'range.js', 'home.js', 'style.css', 'app.js', 'brand-intro.js', '_headers']) {
+for (const file of ['index.html', 'system.html', 'our-story.html', 'gear.html', 'trays.html', 'canopies.html', 'packs.html', 'fitout.js', 'exterior.html', 'interior.html', 'range-data.js', 'range.js', 'home.js', 'style.css', 'app.js', 'brand-intro.js', 'hero-audio.js', '_headers']) {
   await copyFile(path.join(root, file), path.join(destination, file));
   if (file.endsWith('.html')) {
     const html = await readFile(path.join(destination, file), 'utf8');

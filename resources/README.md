@@ -23,3 +23,7 @@ Use `images/core/` for approved master imagery. Add logos, product references or
 | [Kitchen layout photo](images/product/kitchen-layout-photo.png) | Supplied by Craig and approved for this use, 28 October 2026 | Homepage: Great gear. Better together. | `assets/kitchen-layout-photo.png` |
 
 The supplied photo is retained unchanged. It replaces the generated kitchen placeholder in the homepage feature.
+
+## Audio
+
+See [audio resources](audio/README.md) for the kookaburra master, source and rights record. Audio is currently a local preview only.
