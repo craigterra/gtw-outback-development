@@ -69,3 +69,7 @@ Voice preview is optional and off by default. It selects a named Australian male
 ## Kookaburra sound revision — local only
 
 Craig rejected the synthetic voice preview. Voice controls and speech synthesis are removed. The local intro instead uses a real public-domain laughing kookaburra recording by Kuco, alongside the short synthetic iron sizzle and telex clicks. The source master and provenance are in `resources/audio/`. The browser plays a faded excerpt, without looping. The sign-off remains below the telex, and the kitchen panel retains Explore more. This supersedes the earlier voice-preview notes; no local audio changes have been pushed to GitHub or Netlify.
+
+## Local quick-connect panel and synchronized sound
+
+A new quick-connect explanation panel precedes Great gear. Better together. The hero Explore more points to this new next section. The kookaburra begins near the iron and its actual source-ended event gates the telex, with a short pause. Each visible character triggers its click in the same frame; there is no independent pre-scheduled telex audio track. The brand sign-off appears when typing completes. Audio is prepared before the visual sequence starts so delayed browser unlocking cannot introduce a late soundtrack. All of these revisions remain local.

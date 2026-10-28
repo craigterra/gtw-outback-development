@@ -177,3 +177,16 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 .campaign-playing .hero-telex{animation-delay:4.15s}
 .campaign-playing .hero .hero-brandline{animation-delay:7.95s}
 @media(max-width:700px){.hero-audio-controls{top:10px;right:6%}.fitout-home .hero .hero-brandline{font-size:10px;letter-spacing:.8px;margin-top:12px}.fitout-home .hero-foot{bottom:75px}}
+
+.quick-connect-intro{display:grid;grid-template-columns:1fr .95fr;gap:60px;align-items:center;padding-top:65px;padding-bottom:65px;background:var(--cream)}
+.quick-connect-intro>div{max-width:560px}.quick-connect-intro p:not(.eyebrow){font-size:18px;color:var(--muted)}.quick-connect-intro .eyebrow{font-size:10px}.quick-connect-image{display:block;background:#e8dfce}.quick-connect-image img{width:100%;max-height:360px;object-fit:contain}
+@media(max-width:700px){.quick-connect-intro{grid-template-columns:1fr;gap:25px;padding-top:45px;padding-bottom:45px}.quick-connect-intro h2{font-size:42px}.quick-connect-intro p:not(.eyebrow){font-size:16px}.quick-connect-image img{max-height:280px}}
+
+/* Reveal characters and trigger their clicks from one animation frame loop. */
+.hero-telex{min-height:1.5em}
+.campaign-pending .hero-telex{opacity:0;clip-path:none}
+.campaign-playing .hero-telex{animation:none;clip-path:none;opacity:1}
+.campaign-playing .hero .hero-brandline{animation:none;opacity:0}
+.campaign-playing.telex-complete .hero .hero-brandline{animation:campaign-line-in .45s ease-out both}
+#quick-connect{scroll-margin-top:94px}
+@media(prefers-reduced-motion:reduce){.campaign-pending .hero-telex,.campaign-playing .hero-telex,.campaign-playing .hero .hero-brandline{opacity:1;animation:none}}

@@ -5,6 +5,7 @@
   button.hidden = false;
   let enabled = true, playing = false, endTimer, context, master, noise, recording, generation = 0;
   const sources = new Set();
+  let natureDone = Promise.resolve(), endNature = () => {};
   try { enabled = sessionStorage.getItem('gtw-sound-muted') !== 'true'; } catch {}
 
   function label(blocked = false) {
@@ -13,8 +14,11 @@
     button.setAttribute('aria-pressed', String(enabled));
     button.setAttribute('aria-label', blocked || (enabled && !playing) ? 'Replay intro with sound' : enabled ? 'Mute intro sound' : 'Enable sound and replay intro');
   }
-  function stop() {
+  function stop(reason = 'stopped') {
+    button.dataset.stopReason = typeof reason === 'string' ? reason : 'page-hidden';
+    button.dataset.stoppedAt = String(performance.now());
     generation++;
+    endNature();
     clearTimeout(endTimer);
     playing = false;
     for (const source of sources) { try { source.stop(); } catch {} }
@@ -46,16 +50,25 @@
         }
         let peak = 0;
         for (let i = Math.floor(offset * rate); i < (offset + length) * rate; i++) peak = Math.max(peak, Math.abs(data[i]));
+        // Trim quiet lead-in inside the selected passage before scheduling it.
+        let lead = 0;
+        const threshold = Math.max(0.008, peak * 0.035);
+        for (let seconds = 0; seconds < length - 1; seconds += 0.02) {
+          let energy = 0, count = 0;
+          for (let i = Math.floor((offset + seconds) * rate); i < (offset + seconds + 0.02) * rate; i++) { energy += data[i] * data[i]; count++; }
+          if (Math.sqrt(energy / count) >= threshold) { lead = Math.max(0, seconds - 0.02); break; }
+        }
+        offset += lead;
         button.dataset.recordingPeak = String(peak);
         button.dataset.recording = 'ready';
         button.dataset.excerptStart = String(offset);
         button.dataset.excerptLength = String(length);
-        return {buffer, offset, length, level: Math.min(3, 0.7 / Math.max(peak, 0.01))};
+        return {buffer, offset, length: Math.min(length, buffer.duration - offset), level: Math.min(3, 0.7 / Math.max(peak, 0.01))};
       }).catch(() => { button.dataset.recording = 'unavailable'; return null; });
   }
-  function track(source, end) {
+  function track(source, end, after = () => {}) {
     sources.add(source);
-    source.onended = () => { sources.delete(source); source.disconnect(); };
+    source.onended = () => { sources.delete(source); source.disconnect(); after(); };
     source.stop(end);
   }
   function hiss(start, duration, volume, frequency) {
@@ -75,47 +88,68 @@
   }
   function schedule() {
     playing = true;
+    button.dataset.startedAt = String(performance.now());
     label();
-    endTimer = setTimeout(stop, 10500);
-    const t = context.currentTime + 0.03, request = generation;
+    button.dataset.clicks = '0';
+    natureDone = new Promise(resolve => { endNature = resolve; });
+    button.dataset.nature = 'waiting';
+    const t = context.currentTime + 0.03, request = generation, finishNature = endNature;
     hiss(t + 0.3, 0.85, 0.55, 1700);
     recording.then(clip => {
-      if (!clip || request !== generation || !enabled || document.hidden) return;
-      const start = Math.max(t + 1.9, context.currentTime);
-      const elapsed = Math.max(0, start - (t + 1.9));
+      if (!clip || request !== generation || !enabled || document.hidden) { finishNature(); return; }
+      const start = Math.max(t + 0.65, context.currentTime);
+      const elapsed = Math.max(0, start - (t + 0.65));
       const duration = clip.length - elapsed;
-      if (duration < 1) return;
+      if (duration < 1) { finishNature(); return; }
       const source = context.createBufferSource();
       source.buffer = clip.buffer;
       const gain = context.createGain();
       gain.gain.setValueAtTime(0, start);
-      gain.gain.linearRampToValueAtTime(clip.level, start + 0.35);
+      gain.gain.linearRampToValueAtTime(clip.level, start + 0.06);
       gain.gain.setValueAtTime(clip.level, start + duration - 0.65);
       gain.gain.linearRampToValueAtTime(0, start + duration);
       source.connect(gain).connect(master);
       source.start(start, clip.offset + elapsed, duration);
-      track(source, start + duration);
+      button.dataset.nature = 'playing';
+      const done = finishNature;
+      track(source, start + duration, () => {
+        if (request === generation) button.dataset.nature = 'finished';
+        done();
+      });
     });
-    for (let i = 0; i < 61; i++) hiss(t + 5.95 + i * 3.6 / 61, 0.018, 0.14, 900);
+
   }
-  function start() {
-    stop();
-    if (!enabled || document.hidden) { label(); return; }
-    const request = generation;
+  async function prepare() {
+    if (!enabled) return;
     try {
       engine();
-      if (context.state === 'running') { label(); schedule(); return; }
-      label(true);
-      context.resume().then(() => {
-        if (request !== generation || !enabled || document.hidden) return;
-        if (context.state === 'running') { label(); schedule(); }
-      }).catch(() => label(true));
+      if (context.state !== 'running') {
+        // Never start late audio after an unrelated gesture unlocks the context.
+        await Promise.race([context.resume().catch(() => {}), new Promise(resolve => setTimeout(resolve, 120))]);
+      }
+      await recording;
+      label(context.state !== 'running');
     } catch { label(true); }
   }
+  function start() {
+    stop('restart');
+    if (!enabled || document.hidden) return;
+    try {
+      engine();
+      if (context.state !== 'running') { label(true); return; }
+      schedule();
+    } catch { label(true); }
+  }
+  function tick() {
+    if (!playing || !enabled || context?.state !== 'running' || document.hidden) return;
+    hiss(context.currentTime + 0.002, 0.014, 0.16, 1100);
+    button.dataset.clicks = String(Number(button.dataset.clicks || 0) + 1);
+  }
+  function complete() { clearTimeout(endTimer); endTimer = setTimeout(() => stop('sequence-complete'), 500); }
   button.addEventListener('click', () => {
     if (playing && enabled) {
       enabled = false;
-      stop();
+      stop('muted');
       label();
     } else {
       enabled = true;
@@ -123,8 +157,8 @@
     }
     try { sessionStorage.setItem('gtw-sound-muted', String(!enabled)); } catch {}
   });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop('tab-hidden'); });
   addEventListener('pagehide', stop);
-  window.GTWHeroAudio = {start, stop};
+  window.GTWHeroAudio = {prepare, start, stop, tick, complete, natureEnded: () => natureDone};
   label();
 })();
