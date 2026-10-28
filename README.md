@@ -47,3 +47,7 @@ The homepage now leads with “Your canopy. Your way.” and “It's what you pu
 The supporting complete-pack page has three directions: trade, touring and work-to-weekend. Two supplied trade tray references replace the earlier tray catalogue selections. The canopy page retains only two supporting package directions. The setup planner now records mounting choice and package direction, including these in its local brief download.
 
 The removable system remains unnamed and explicitly conceptual. Detailed connection drawings and proprietary mechanism geometry are not included in website assets. The new interior lifestyle scene is generated inspiration, not an actual product photograph. Craig authorised pushing this revision to GitHub main on 28 October 2026; Netlify can build from the connected branch. Earlier hosting instructions remain available above.
+
+## Whole-system direction — 28 October 2026
+
+The homepage now leads with “Boots off. Tools out. Camping gear in. Weekend sorted.” Storage, tent, ladder, awning and shower box form the coordinated canopy system. Trays remain supporting options. This supersedes earlier headline notes. See [resources library](resources/README.md) for the approved core image shared by the homepage and Our Story.
