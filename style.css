@@ -190,3 +190,22 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 .campaign-playing.telex-complete .hero .hero-brandline{animation:campaign-line-in .45s ease-out both}
 #quick-connect{scroll-margin-top:94px}
 @media(prefers-reduced-motion:reduce){.campaign-pending .hero-telex,.campaign-playing .hero-telex,.campaign-playing .hero .hero-brandline{opacity:1;animation:none}}
+
+/* Local copy revision: retain .45s easing and .75s word cadence after the iron. */
+.staggered-headline>span:nth-child(5){margin-left:28vw}
+.campaign-playing .staggered-headline>span:nth-child(5){animation-delay:3.2s}
+.hero-closing-logo{width:240px;max-width:100%;height:auto;filter:drop-shadow(0 2px 6px #0009)}
+.campaign-pending .hero-closing-logo{opacity:0}
+.campaign-playing .hero-closing-logo{animation:campaign-line-in .45s ease-out 4.1s both}
+.quick-connect-intro p.quick-connect-lead{font-weight:700;color:var(--ink)}
+@media(max-width:700px){.staggered-headline>span:nth-child(5){margin-left:18vw}.hero-closing-logo{width:190px;margin-left:12%}}
+@media(prefers-reduced-motion:reduce){.campaign-pending .hero-closing-logo,.campaign-playing .hero-closing-logo{opacity:1;animation:none;transform:none}}
+
+/* Each word leaves the visible hero centre for a stable upper slot. */
+.fitout-home .hero h1{font-size:clamp(30px,min(4.7vw,5.8svh),62px)}
+.campaign-playing .staggered-headline>span{animation-name:word-centre-to-slot}
+@keyframes word-centre-to-slot{0%{opacity:0;transform:translate(var(--word-from-x),var(--word-from-y))}12%{opacity:1}100%{opacity:1;transform:translate(0,0)}}
+.campaign-playing .hero-closing-logo{animation:none;opacity:0}
+.intro-playing.closing-brand .brand>img{animation:none;opacity:1}
+@media(max-width:700px){.fitout-home .hero-inner{padding-top:40px}.fitout-home .hero h1{font-size:clamp(27px,min(8.3vw,5.6svh),50px)}}
+@media(prefers-reduced-motion:reduce){.campaign-playing .staggered-headline>span{animation:none;opacity:1;transform:none}.campaign-playing .hero-closing-logo{opacity:1;animation:none}}
