@@ -52,7 +52,10 @@
     try { sessionStorage.setItem(key, 'seen'); } catch {}
   }
   addEventListener('resize', () => finish());
-  replay.addEventListener('click', play);
+  replay.addEventListener('click', () => {
+    window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+    play();
+  });
   skip.addEventListener('click', () => finish(true));
   motion.addEventListener('change', () => {
     finish();
