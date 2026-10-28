@@ -39,9 +39,9 @@
       .then(response => { if (!response.ok) throw new Error('Recording unavailable'); return response.arrayBuffer(); })
       .then(bytes => context.decodeAudioData(bytes))
       .then(buffer => {
-        // Choose a clear seven-second passage rather than a quiet lead-in.
+        // Choose a clear four-second passage rather than a quiet lead-in.
         const data = buffer.getChannelData(0), rate = buffer.sampleRate;
-        const length = Math.min(7.1, buffer.duration), stride = Math.max(1, Math.floor(rate / 40));
+        const length = Math.min(4, buffer.duration), stride = Math.max(1, Math.floor(rate / 40));
         let offset = 0, best = -1;
         for (let seconds = 0; seconds <= buffer.duration - length; seconds += 0.25) {
           let energy = 0;
@@ -106,7 +106,7 @@
       const gain = context.createGain();
       gain.gain.setValueAtTime(0, start);
       gain.gain.linearRampToValueAtTime(clip.level, start + 0.06);
-      gain.gain.setValueAtTime(clip.level, start + duration - 0.65);
+      gain.gain.setValueAtTime(clip.level, start + duration - 0.45);
       gain.gain.linearRampToValueAtTime(0, start + duration);
       source.connect(gain).connect(master);
       source.start(start, clip.offset + elapsed, duration);

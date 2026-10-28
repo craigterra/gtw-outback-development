@@ -73,3 +73,7 @@ Craig rejected the synthetic voice preview. Voice controls and speech synthesis 
 ## Local quick-connect panel and synchronized sound
 
 A new quick-connect explanation panel precedes Great gear. Better together. The hero Explore more points to this new next section. The kookaburra begins near the iron and its actual source-ended event gates the telex, with a short pause. Each visible character triggers its click in the same frame; there is no independent pre-scheduled telex audio track. The brand sign-off appears when typing completes. Audio is prepared before the visual sequence starts so delayed browser unlocking cannot introduce a late soundtrack. All of these revisions remain local.
+
+## Approved release — 28 October 2026
+
+Craig approved pushing the local changes to main after shortening the kookaburra. The excerpt is now four seconds with a 0.45-second fade-out; typing still waits for the actual call to finish. This release includes the quick-connect introduction, sound controls and synchronized telex, relocated brand sign-off and second Explore more link. Earlier local-only notes above describe the review history.
