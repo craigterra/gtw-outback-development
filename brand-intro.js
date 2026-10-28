@@ -5,7 +5,7 @@
   const skip = document.querySelector('#intro-skip');
   const status = document.querySelector('#intro-status');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const key = 'gtw-brand-intro-v2';
+  const key = 'gtw-brand-intro-v3';
   let timer;
   controls.hidden = false;
   function finish(announce = false) {
@@ -22,10 +22,16 @@
     status.textContent = '';
     const reveal = document.querySelector('.brand-reveal');
     const logo = document.querySelector('.brand > img').getBoundingClientRect();
-    const width = reveal.getBoundingClientRect().width;
+    const revealBox = reveal.getBoundingClientRect();
+    const ironBox = reveal.querySelector('.branding-iron img').getBoundingClientRect();
+    const width = revealBox.width;
+    // The iron extends above the logo box. Centre its full visible footprint,
+    // rather than placing the logo box a fixed distance from the top.
+    const ironCentreX = ironBox.left - revealBox.left + ironBox.width / 2;
+    const ironCentreY = ironBox.top - revealBox.top + ironBox.height / 2;
     const vars = {
-      '--brand-start-x': (innerWidth - width) / 2 + 'px',
-      '--brand-start-y': Math.min(innerHeight * .28, 190) + 'px',
+      '--brand-start-x': innerWidth / 2 - ironCentreX + 'px',
+      '--brand-start-y': innerHeight / 2 - ironCentreY + 'px',
       '--brand-end-x': logo.left + 'px',
       '--brand-end-y': logo.top + 'px',
       '--brand-end-scale': logo.width / width
