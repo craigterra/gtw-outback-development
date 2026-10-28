@@ -95,3 +95,19 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 .story-landscape{height:210px;background-image:linear-gradient(#f4eee3d6,#f4eee3d6),url('assets/outback-hero-proportions-v11.webp');background-position:center 64%}
 .concept-image-caption{padding:10px 12px;color:var(--muted);background:var(--cream);font-weight:normal}
 @media(max-width:700px){.story-landscape{height:130px;aspect-ratio:auto;background-position:center 64%}}
+
+/* A cleaner campaign hero with a gently staggered headline. */
+.fitout-home .hero-inner{max-width:none;padding-top:40px}
+.fitout-home .hero h1{max-width:none;font-size:clamp(44px,4.7vw,70px);line-height:1.1}
+.staggered-headline>span{display:block;width:max-content;max-width:100%}
+.staggered-headline>span:nth-child(2){margin-left:5vw}
+.staggered-headline>span:nth-child(3){margin-left:10vw}
+.staggered-headline>span:nth-child(4){margin-left:15vw}
+.fitout-home .hero-foot{left:auto;right:6%;bottom:55px;text-align:right}
+.fitout-home .hero-foot>span{max-width:490px;font-size:clamp(28px,3.2vw,46px);line-height:1.12;letter-spacing:-.7px;text-shadow:0 2px 9px #000c}
+.fitout-home .landing-footer .intro-controls{margin:0}
+.fitout-home .landing-footer .intro-controls button{font-size:11px;min-height:36px;padding:6px 10px}
+.delivery-install{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;background:var(--cream)}
+.delivery-lead{font-size:21px;line-height:1.5;color:var(--muted)}
+.delivery-options{max-width:620px}.delivery-options h3{font-size:24px;margin-bottom:12px}.delivery-options p{color:var(--muted);font-size:17px}.delivery-options>div+div{margin-top:30px}.delivery-options .button{margin-top:12px}
+@media(max-width:700px){.fitout-home .hero{height:620px;min-height:620px}.fitout-home .hero-inner{padding-top:30px}.fitout-home .hero h1{font-size:clamp(29px,8.3vw,50px);line-height:1.18;letter-spacing:-1.2px}.staggered-headline>span:nth-child(2){margin-left:3vw}.staggered-headline>span:nth-child(3){margin-left:6vw}.staggered-headline>span:nth-child(4){margin-left:9vw}.fitout-home .hero-foot{right:6%;bottom:24px;left:auto}.fitout-home .hero-foot>span{font-size:24px;line-height:1.14;letter-spacing:-.4px;max-width:280px}.delivery-install{grid-template-columns:1fr;gap:25px}.delivery-install h2{font-size:44px}.delivery-options p{font-size:15px}}
