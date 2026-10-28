@@ -35,3 +35,15 @@ index.html contains the hero and compact footer only. Catalogue, setup, manufact
 Replay intro is a high-contrast 44px control, including keyboard focus styling. In reduced motion it remains focusable and announces why the finished state is shown. Three short CSS/SVG smoke wisps rise after iron contact and disappear before the mark settles. Reduced motion disables the wisps.
 
 The iron uses the exact original SVG paths as an open metal head, with offset depth layers, mottled rust texture, a bent mounting bracket, long forged shaft and dark wooden grip. The supplied reference is a cold rusty iron on white; it shows no burn or smoke. Scorch/contact and smoke are separately requested animation treatments. The broad backing is a soft shadow, not a rectangular brand plate.
+
+## Range testing and manufacturing copy review
+
+The experience panel uses approved forward-looking wording describing the involvement of qualified tradespeople/engineers and manufacturing partners. Before changing it to completed-tense launch claims, confirm actual testing coverage, qualifications and established manufacturing arrangements. Do not automatically replace this copy or schedule a replacement.
+
+## Fit-out-first concept revision — 28 October 2026
+
+The homepage now leads with “Your canopy. Your way.” and “It's what you put inside that counts.” Existing GTW artwork, sunset scene and brand intro remain. The fit-out hub prioritises interiors and exterior accessories, followed by bolt-down and removable mounting directions. Work-to-weekend copy includes “When the work is done, make room for play” and the secondary campaign line “Boots off. Drawers out. Weekend on.”
+
+The supporting complete-pack page has three directions: trade, touring and work-to-weekend. Two supplied trade tray references replace the earlier tray catalogue selections. The canopy page retains only two supporting package directions. The setup planner now records mounting choice and package direction, including these in its local brief download.
+
+The removable system remains unnamed and explicitly conceptual. Detailed connection drawings and proprietary mechanism geometry are not included in website assets. The new interior lifestyle scene is generated inspiration, not an actual product photograph. Craig authorised pushing this revision to GitHub main on 28 October 2026; Netlify can build from the connected branch. Earlier hosting instructions remain available above.
