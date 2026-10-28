@@ -54,4 +54,4 @@ The homepage now leads with “Boots off. Tools out. Camping gear in. Weekend so
 
 ## Campaign reveal — 28 October 2026
 
-On the first homepage visit per tab session, the branding iron runs for 3.8 seconds, then the four staggered headline lines fade up at 0.55-second intervals. The white reply follows at 2.6 seconds. Lines remain visible. Replay restarts both sequences; Skip, resizing or changing motion preferences reveals the finished state. Reduced motion and JavaScript-disabled visits show all copy immediately. Later visits in the same tab stay static.
+On the first homepage visit per tab session, the branding iron runs for 3.8 seconds. The headline starts after 1.4 seconds, while the iron settles; its four staggered lines fade up at 0.55-second intervals. The white reply follows at 2.6 seconds. Lines remain visible. Replay restarts both sequences; Skip, resizing or changing motion preferences reveals the finished state. Reduced motion and JavaScript-disabled visits show all copy immediately. Later visits in the same tab stay static.

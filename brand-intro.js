@@ -6,9 +6,9 @@
   const status = document.querySelector('#intro-status');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const key = 'gtw-brand-intro-v4';
-  let timer;
+  let timer, copyTimer;
   controls.hidden = false;
-  function finish(announce = false, animateCopy = false) {
+  function finish(announce = false, keepCopy = false) {
     clearTimeout(timer);
     document.body.classList.remove('intro-playing', 'campaign-pending', 'campaign-playing');
     if (animateCopy && !motion.matches) document.body.classList.add('campaign-playing');
@@ -42,6 +42,11 @@
     void document.body.offsetWidth;
     document.body.classList.add('intro-playing', 'campaign-pending');
     skip.hidden = false;
+    // Start the message while the iron settles, rather than waiting for the full intro.
+    copyTimer = setTimeout(() => {
+      document.body.classList.remove('campaign-pending');
+      document.body.classList.add('campaign-playing');
+    }, 1400);
     timer = setTimeout(() => finish(true, true), 3800);
     try { sessionStorage.setItem(key, 'seen'); } catch {}
   }
