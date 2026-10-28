@@ -8,20 +8,21 @@
   const words = [...document.querySelectorAll('.staggered-headline>span')];
   const closingLogo = document.querySelector('.hero-closing-logo');
   const reveal = document.querySelector('.brand-reveal');
-  const key = 'gtw-brand-intro-v9';
-  let preludeTimer, closingTimer, endTimer, playRequest = 0;
+  const key = 'gtw-brand-intro-v10';
+  let preludeTimer, closingTimer, initialsTimer, endTimer, playRequest = 0;
   controls.hidden = false;
   function finish(announce = false) {
     clearTimeout(preludeTimer);
     clearTimeout(closingTimer);
     clearTimeout(endTimer);
+    clearTimeout(initialsTimer);
     playRequest++;
     window.GTWHeroAudio?.stop();
-    document.body.classList.remove('intro-playing', 'campaign-pending', 'campaign-playing', 'closing-brand');
+    document.body.classList.remove('intro-playing', 'campaign-pending', 'campaign-playing', 'closing-brand', 'closing-initials');
     if (document.activeElement === skip) replay.focus({preventScroll:true});
     skip.hidden = true;
     replay.disabled = false;
-    if (announce) status.textContent = 'Camping. Touring. Gear That Works. GTW Outback.';
+    if (announce) status.textContent = 'From a weekend away to doing the full lap, we have gear that works to get you out and back. GTW Outback.';
   }
   function positionIron(target) {
     const logo = target.getBoundingClientRect();
@@ -69,8 +70,13 @@
         positionIron(closingLogo);
         void document.body.offsetWidth;
         document.body.classList.add('closing-brand', 'intro-playing');
-        endTimer = setTimeout(() => finish(true), 1800);
-      }, 4100);
+        initialsTimer = setTimeout(() => {
+          if (request !== playRequest) return;
+          document.body.classList.remove('intro-playing');
+          document.body.classList.add('closing-initials');
+          endTimer = setTimeout(() => finish(true), 1650);
+        }, 1800);
+      }, 6000);
     }, 1800);
     try { sessionStorage.setItem(key, 'seen'); } catch {}
   }

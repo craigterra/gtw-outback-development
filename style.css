@@ -209,3 +209,20 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 .intro-playing.closing-brand .brand>img{animation:none;opacity:1}
 @media(max-width:700px){.fitout-home .hero-inner{padding-top:40px}.fitout-home .hero h1{font-size:clamp(27px,min(8.3vw,5.6svh),50px)}}
 @media(prefers-reduced-motion:reduce){.campaign-playing .staggered-headline>span{animation:none;opacity:1;transform:none}.campaign-playing .hero-closing-logo{opacity:1;animation:none}}
+
+/* Weekend-to-full-lap story: four readable stages, then the original mark. */
+.fitout-home .hero h1.staggered-headline{font-size:clamp(24px,min(3.5vw,4.5svh),46px);line-height:1.18;letter-spacing:-.7px;max-width:850px}
+.staggered-headline>span:nth-child(n){margin-left:0;width:max-content;max-width:100%;white-space:nowrap}
+.campaign-playing .staggered-headline>span:nth-child(1){animation-delay:.2s}
+.campaign-playing .staggered-headline>span:nth-child(2){animation-delay:1.6s}
+.campaign-playing .staggered-headline>span:nth-child(3){animation-delay:3s}
+.campaign-playing .staggered-headline>span:nth-child(4){animation-delay:4.4s}
+.hero-closing-logo{display:block;overflow:visible}
+.campaign-playing.closing-initials .hero-closing-logo{opacity:1}
+.closing-initial{transform-box:fill-box;transform-origin:center}
+.closing-initials .closing-initial{animation:closing-letter-brand .65s ease-out both}
+.closing-initials .closing-t{animation-delay:.45s}
+.closing-initials .closing-w{animation-delay:.9s}
+@keyframes closing-letter-brand{0%{opacity:0;transform:translateY(12px) scale(1.15)}40%{opacity:1;filter:drop-shadow(0 0 3px #b96132)}100%{opacity:1;transform:none;filter:none}}
+@media(max-width:700px){.fitout-home .hero h1.staggered-headline{font-size:clamp(18px,5.2vw,33px);line-height:1.3;letter-spacing:-.35px}.hero-closing-logo{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.closing-initials .closing-initial{animation:none!important;opacity:1;transform:none}}
