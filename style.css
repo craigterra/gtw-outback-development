@@ -111,3 +111,13 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 .delivery-lead{font-size:21px;line-height:1.5;color:var(--muted)}
 .delivery-options{max-width:620px}.delivery-options h3{font-size:24px;margin-bottom:12px}.delivery-options p{color:var(--muted);font-size:17px}.delivery-options>div+div{margin-top:30px}.delivery-options .button{margin-top:12px}
 @media(max-width:700px){.fitout-home .hero{height:620px;min-height:620px}.fitout-home .hero-inner{padding-top:30px}.fitout-home .hero h1{font-size:clamp(29px,8.3vw,50px);line-height:1.18;letter-spacing:-1.2px}.staggered-headline>span:nth-child(2){margin-left:3vw}.staggered-headline>span:nth-child(3){margin-left:6vw}.staggered-headline>span:nth-child(4){margin-left:13vw}.fitout-home .hero-foot{right:10%;bottom:24px;left:auto;text-align:left}.fitout-home .hero-foot>span{font-size:24px;line-height:1.14;letter-spacing:-.4px;max-width:280px}.delivery-install{grid-template-columns:1fr;gap:25px}.delivery-install h2{font-size:44px}.delivery-options p{font-size:15px}}
+
+/* Build the campaign line by line after the branding iron settles. */
+.campaign-pending .staggered-headline>span,.campaign-pending .hero-foot>span{opacity:0}
+.campaign-playing .staggered-headline>span,.campaign-playing .hero-foot>span{animation:campaign-line-in .6s ease-out both}
+.campaign-playing .staggered-headline>span:nth-child(2){animation-delay:.55s}
+.campaign-playing .staggered-headline>span:nth-child(3){animation-delay:1.1s}
+.campaign-playing .staggered-headline>span:nth-child(4){animation-delay:1.65s}
+.campaign-playing .hero-foot>span{animation-delay:2.6s}
+@keyframes campaign-line-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.campaign-pending .staggered-headline>span,.campaign-pending .hero-foot>span,.campaign-playing .staggered-headline>span,.campaign-playing .hero-foot>span{animation:none;opacity:1;transform:none}}

@@ -51,3 +51,7 @@ The removable system remains unnamed and explicitly conceptual. Detailed connect
 ## Whole-system direction — 28 October 2026
 
 The homepage now leads with “Boots off. Tools out. Camping gear in. Weekend sorted.” Storage, tent, ladder, awning and shower box form the coordinated canopy system. Trays remain supporting options. This supersedes earlier headline notes. See [resources library](resources/README.md) for the approved core image shared by the homepage and Our Story.
+
+## Campaign reveal — 28 October 2026
+
+On the first homepage visit per tab session, the branding iron runs for 3.8 seconds, then the four staggered headline lines fade up at 0.55-second intervals. The white reply follows at 2.6 seconds. Lines remain visible. Replay restarts both sequences; Skip, resizing or changing motion preferences reveals the finished state. Reduced motion and JavaScript-disabled visits show all copy immediately. Later visits in the same tab stay static.
