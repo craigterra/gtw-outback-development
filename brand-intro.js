@@ -10,8 +10,9 @@
   controls.hidden = false;
   function finish(announce = false, keepCopy = false) {
     clearTimeout(timer);
-    document.body.classList.remove('intro-playing', 'campaign-pending', 'campaign-playing');
-    if (animateCopy && !motion.matches) document.body.classList.add('campaign-playing');
+    clearTimeout(copyTimer);
+    document.body.classList.remove('intro-playing');
+    if (!keepCopy) document.body.classList.remove('campaign-pending', 'campaign-playing');
     if (document.activeElement === skip) replay.focus({preventScroll:true});
     skip.hidden = true;
     replay.disabled = false;
