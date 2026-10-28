@@ -135,3 +135,16 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 @keyframes hero-telex-type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 @media(max-width:700px){.fitout-home .hero-foot{left:6%;right:6%;width:88%;max-width:none}.fitout-home .hero-foot>span{margin-left:12%}.hero-telex{font-size:clamp(8px,2.2vw,13px);margin-top:13px}}
 @media(prefers-reduced-motion:reduce){.campaign-pending .hero-telex,.campaign-playing .hero-telex{animation:none;clip-path:none}}
+
+/* One reading sequence: iron, brand line, campaign, reply, telex. */
+.intro-playing .brand-initial{animation:none}
+.campaign-pending .hero .eyebrow{opacity:0}
+.campaign-playing .hero .eyebrow{animation:campaign-line-in .45s ease-out both}
+.campaign-playing .staggered-headline>span,.campaign-playing .hero-foot>span{animation-duration:.45s}
+.campaign-playing .staggered-headline>span:nth-child(1){animation-delay:.9s}
+.campaign-playing .staggered-headline>span:nth-child(2){animation-delay:1.65s}
+.campaign-playing .staggered-headline>span:nth-child(3){animation-delay:2.4s}
+.campaign-playing .staggered-headline>span:nth-child(4){animation-delay:3.15s}
+.campaign-playing .hero-foot>span{animation-delay:4.05s}
+.campaign-playing .hero-telex{animation-delay:4.85s}
+@media(prefers-reduced-motion:reduce){.campaign-pending .hero .eyebrow,.campaign-playing .hero .eyebrow{animation:none;opacity:1}}

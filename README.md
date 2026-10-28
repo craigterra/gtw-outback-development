@@ -55,3 +55,7 @@ The homepage now leads with “Boots off. Tools out. Camping gear in. Weekend so
 ## Campaign reveal — 28 October 2026
 
 On the first homepage visit per tab session, the branding iron runs for 3.8 seconds. The headline starts after 1.4 seconds, while the iron settles; its four staggered lines fade up at 0.55-second intervals. The white reply follows at 2.6 seconds. Lines remain visible. Replay restarts both sequences; Skip, resizing or changing motion preferences reveals the finished state. Reduced motion and JavaScript-disabled visits show all copy immediately. Later visits in the same tab stay static.
+
+## Sequential reading order — 28 October 2026
+
+Supersedes earlier animation timing notes: the iron lands in 1.8 seconds, followed by the complete brand line. The headline begins 0.9 seconds later, with 0.75 seconds between lines, then the white reply and telex. Individual G/T/W emphasis is disabled to avoid simultaneous movement. Replay, reduced motion, skip and static repeat visits retain their previous behavior.
