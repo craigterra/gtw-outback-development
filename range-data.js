@@ -64,6 +64,7 @@ window.GTW_PRODUCTS=[
     "description": "Start your canopy fit-out with a single drawer and build around the gear you carry.",
     "details": [
       "Single-drawer canopy storage option — placeholder",
+      "Laser-cut stainless steel GTW Outback nameplate",
       "Supplier reference selected by Craig; product photograph to be confirmed",
       "Final dimensions, slide travel, load rating, mounting, finish and canopy compatibility to confirm",
       "Final GTW hardware, pricing and availability to confirm"
@@ -79,6 +80,7 @@ window.GTW_PRODUCTS=[
     "description": "A side-by-side two-drawer layout with a divider option, ready to plan around your canopy and the gear you carry.",
     "details": [
       "Two-drawer canopy storage system with divider option",
+      "Laser-cut stainless steel GTW Outback nameplate",
       "Photograph is a layout reference for product development",
       "Final divider configuration, dimensions, mounting, load ratings and canopy compatibility to confirm",
       "Final GTW finish, hardware, pricing and availability to confirm"
