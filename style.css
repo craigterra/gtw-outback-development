@@ -125,3 +125,13 @@ body[data-range="Canopies"] #range-grid,body[data-range="Trays"] #range-grid{gri
 /* Give the brand line its own quiet emphasis above the campaign. */
 .fitout-home .hero .eyebrow{font-size:13px;letter-spacing:2.1px;color:var(--cream);text-shadow:0 1px 4px #20242266}
 @media(max-width:700px){.fitout-home .hero .eyebrow{font-size:10px;letter-spacing:1.1px}}
+
+/* Single-line telex response, revealed after the white campaign reply. */
+.fitout-home .hero-foot{display:block;width:56%;max-width:800px}
+.fitout-home .hero-foot>span{display:block}
+.hero-telex{display:block;width:max-content;max-width:100%;white-space:nowrap;margin:17px 0 0;color:var(--cream);font-family:'Courier New',monospace;font-size:clamp(10px,1.1vw,15px);font-weight:700;line-height:1.5;letter-spacing:0;text-shadow:0 1px 5px #000}
+.campaign-pending .hero-telex{clip-path:inset(0 100% 0 0)}
+.campaign-playing .hero-telex{animation:hero-telex-type 3.6s steps(61,end) 3.35s both}
+@keyframes hero-telex-type{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@media(max-width:700px){.fitout-home .hero-foot{left:6%;right:6%;width:88%;max-width:none}.fitout-home .hero-foot>span{margin-left:12%}.hero-telex{font-size:clamp(8px,2.2vw,13px);margin-top:13px}}
+@media(prefers-reduced-motion:reduce){.campaign-pending .hero-telex,.campaign-playing .hero-telex{animation:none;clip-path:none}}
